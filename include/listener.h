@@ -35,8 +35,9 @@ public:
     listener(const std::string& interface);
     ~listener();
 
-    void start ();
-    void stop ();
+    void start();
+    void stop();
+    void join();
 };
 
 
@@ -73,6 +74,12 @@ void listener::start () {
 void listener::stop () {
     if (executing_) {
         executing_ = false;
+        thread_.join();
+    }
+}
+
+void listener::join() {
+    if(executing_) {
         thread_.join();
     }
 }

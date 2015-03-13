@@ -49,6 +49,10 @@ bool database::connect()
     MYSQL_PASS = settings["MySQL.Password"];
     MYSQL_DATA = settings["MySQL.Database"];
 
+    std::cout
+        << "Connecting to " << MYSQL_USER << ":" << MYSQL_PASS
+        << "@" << MYSQL_HOST << "/" << MYSQL_DATA << "\n";
+
     try
     {
         driver_ = get_driver_instance();
